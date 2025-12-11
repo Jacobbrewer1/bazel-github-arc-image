@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install Bazel system-wide
-RUN curl -LO "https://github.com/bazelbuild/bazel/releases/download/7.7.0/bazel-7.7.0-installer-linux-x86_64.sh" && \
+RUN curl -LO "https://github.com/bazelbuild/bazel/releases/download/8.4.2/bazel-8.4.2-installer-linux-x86_64.sh" && \
     chmod +x bazel-7.7.0-installer-linux-x86_64.sh && \
     ./bazel-7.7.0-installer-linux-x86_64.sh --prefix=/usr/local && \
     rm bazel-7.7.0-installer-linux-x86_64.sh
