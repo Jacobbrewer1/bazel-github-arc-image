@@ -14,9 +14,20 @@ RUN curl -LO "https://github.com/bazelbuild/bazel/releases/download/8.4.2/bazel-
     ./bazel-8.4.2-installer-linux-x86_64.sh --prefix=/usr/local && \
     rm bazel-8.4.2-installer-linux-x86_64.sh
 
+# Install Docker using official convenience script
+RUN curl -fsSL https://get.docker.com -o get-docker.sh && \
+    sh get-docker.sh && \
+    rm get-docker.sh
+
+# Add runner user to docker group
+RUN usermod -aG docker runner
+
 # Switch back to runner
 USER runner
 WORKDIR /home/runner
 
 # Verify Bazel
 RUN /usr/local/bin/bazel version
+
+# Verify Docker
+RUN docker --version
